@@ -118,6 +118,7 @@
         links.forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
+		document.getElementById('content').classList.add('hidden');
                 const url = link.getAttribute('data-url');
                 iframe.src = url;
                 iframeContainer.style.display = 'block';
