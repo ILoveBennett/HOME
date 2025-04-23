@@ -114,14 +114,15 @@
         const links = document.querySelectorAll('.openLink');
         const iframeContainer = document.getElementById('iframeContainer');
         const iframe = document.getElementById('iframe');
+	const content = document.getElementById('content');
 
         links.forEach(link => {
-	document.getElementById('content').classList.add('hidden');
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 const url = link.getAttribute('data-url');
                 iframe.src = url;
                 iframeContainer.style.display = 'block';
+		content.style.display = 'none';
             });
         });
     </script>
