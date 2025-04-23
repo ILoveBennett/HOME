@@ -116,9 +116,9 @@
         const iframe = document.getElementById('iframe');
 
         links.forEach(link => {
+	document.getElementById('content').classList.add('hidden');
             link.addEventListener('click', function(event) {
                 event.preventDefault();
-		document.getElementById('content').classList.add('hidden');
                 const url = link.getAttribute('data-url');
                 iframe.src = url;
                 iframeContainer.style.display = 'block';
