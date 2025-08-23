@@ -71,8 +71,6 @@
 	<br>
 	<a href="#" class="openLink" data-url="https://skribbl.io">Skribbl io</a>
 	<br>
-	<a href="#" class="openLink" data-url="https://games.crazygames.com/en_US/diepio/index.html?v=1.338">Diep io</a>
-	<br>
 	<br>
 	<h2 style="color:white;">Single Player</h2>
 	<a href="#" class="openLink" data-url="https://games.crazygames.com/en_US/sandtrix/index.html">Sandtrix</a>
@@ -136,7 +134,7 @@
 	
 
     <div id="iframeContainer">
-        <iframe id="iframe" src="" allowfullscreen title="Rammerhead"></iframe>
+        <iframe id="iframe" src="" allow="clipboard-read; clipboard-write self https://skribbl.io/" allowfullscreen title="Rammerhead"></iframe>
     </div>
 
     <script>
@@ -151,9 +149,8 @@
                 const url = link.getAttribute('data-url');
                 iframe.src = url;
                 iframeContainer.style.display = 'block';
-		content.style.display = 'none';
-		document.body.style.overflow = 'hidden';
-		document.body.style.overflow = 'hidden';
+				content.style.display = 'none';
+				document.body.style.overflow = 'hidden';
             });
         });
     </script>
@@ -170,6 +167,7 @@
 
 </body>
 </html>
+
 
 
 
