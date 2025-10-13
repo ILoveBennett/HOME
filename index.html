@@ -9,6 +9,7 @@
       		    margin: 0;
       	    	padding: 0;
 	    		height: 100%;
+				background-color: #121212;
     		}
 
 		h1, h2, h3 {
@@ -17,33 +18,38 @@
 		}
 
 		#content {
-      		    padding: 20px;
-    		}
-	    
-        	#iframeContainer {
-            	allowfullscreen 
-            	border: 0;
-            	left: 0;
-            	position: fixed;
-            	top: 0;
-	    		width: 100vw;
-            	height: 100vh;
-            	display: none;
-	    		overflow: hidden;
-	    		z-index: 9999;
-				background-color: black;
-        	}
-				
-			iframe {
-            	border: 0;
-            	width: 100%;
-            	height: 100%;
-            	display: block;
-        	}
+      		padding: 20px;
+    	}
 
-		Body {
-			background-color: #121212;
-		{
+		.contentOverlay {
+      		position: fixed;
+      		top: 0;
+      		left: 0;
+      		width: 100vw;
+      		height: 100vh;
+      		background-color: white;
+      		z-index: 0;
+			display: none;
+    	}
+	    
+        #iframeContainer {
+            allowfullscreen 
+            border: 0;
+            left: 0;
+            position: fixed;
+            top: 0;
+	    	width: 100vw;
+            height: 100vh;
+            display: none;
+	    	overflow: hidden;
+        }
+				
+		iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -138,11 +144,12 @@
 	
 
     <div id="iframeContainer">
-        <iframe id="iframe" src="" allowfullscreen title="Rammerhead"></iframe>
+        <iframe id="iframe" src="" allowfullscreen></iframe>
     </div>
 
     <script>
         const links = document.querySelectorAll('.openLink');
+		const contentOverlay = document.getElementById('contentOverlay');
         const iframeContainer = document.getElementById('iframeContainer');
         const iframe = document.getElementById('iframe');
 		const content = document.getElementById('content');
@@ -152,6 +159,7 @@
                 event.preventDefault();
                 const url = link.getAttribute('data-url');
                 iframe.src = url;
+				contentOverlay.style.display = 'block';
                 iframeContainer.style.display = 'block';
 				content.style.display = 'none';
 				document.body.style.overflow = 'hidden';
@@ -171,6 +179,7 @@
 
 </body>
 </html>
+
 
 
 
