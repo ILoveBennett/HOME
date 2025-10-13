@@ -103,6 +103,8 @@
 	<br>
 	<a href="#" class="openLink" data-url="https://poorbunnygame.org/game/poor-bunny/">Poor Bunny</a>
 	<br>
+	<a href="#" class="openLink" data-url="https://html-classic.itch.zone/html/15025923/Web/index.html">Please don't feed me</a>
+	<br>
 	<br>
 	<h3 style="color:white;">Game Demos</h3>
 	<a href="#" class="openLink" data-url="https://bit.ly/4kFR4xq">Doom</a>
@@ -138,8 +140,8 @@
 	<br>
 	<br>
 	<br>
-	<p style="color:white;">Last update: Added new singleplayer game</p>
-	<p style="color:white;">Ver 4.0.2</p>
+	<p style="color:white;">Last update: Added new singleplayer game, added white overlay for compatibility</p>
+	<p style="color:white;">Ver 4.1</p>
 	
 	<div id="contentOverlay"></div>
 
@@ -148,44 +150,24 @@
     </div>
 
     <script>
-  		const links = document.querySelectorAll('.openLink');
-  		const contentOverlay = document.getElementById('contentOverlay');
-  		const iframeContainer = document.getElementById('iframeContainer');
-  		const iframe = document.getElementById('iframe');
-  		const content = document.getElementById('content');
+        const links = document.querySelectorAll('.openLink');
+		const contentOverlay = document.getElementById('contentOverlay');
+        const iframeContainer = document.getElementById('iframeContainer');
+        const iframe = document.getElementById('iframe');
+		const content = document.getElementById('content');
 
-  		function openIframe(url) {
-    		iframe.src = url;
-    		contentOverlay.style.display = 'block';
-    		iframeContainer.style.display = 'block';
-    		content.style.display = 'none';
-    		document.body.style.overflow = 'hidden';
-
-    		history.pushState({ iframeOpen: true }, '', '');
-  		}
-
-  		function closeIframe() {
-    		contentOverlay.style.display = 'none';
-    		iframeContainer.style.display = 'none';
-    		iframe.src = '';
-    		content.style.display = 'block';
-    		document.body.style.overflow = '';
-  		}
-
-  		links.forEach(link => {
-    		link.addEventListener('click', function(event) {
-      			event.preventDefault();
-      			const url = link.getAttribute('data-url');
-      			openIframe(url);
-    		});
-  		});
-
-  		window.addEventListener('popstate', (event) => {
-    		if (!event.state || !event.state.iframeOpen) {
-      			closeIframe();
-    		}
-  		});
-	</script>
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const url = link.getAttribute('data-url');
+                iframe.src = url;
+				contentOverlay.style.display = 'block';
+                iframeContainer.style.display = 'block';
+				content.style.display = 'none';
+				document.body.style.overflow = 'hidden';
+            });
+        });
+    </script>
 
     <script>
         window.addEventListener("beforeunload", function (e) {
@@ -199,6 +181,7 @@
 
 </body>
 </html>
+
 
 
 
