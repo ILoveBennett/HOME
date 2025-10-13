@@ -148,24 +148,44 @@
     </div>
 
     <script>
-        const links = document.querySelectorAll('.openLink');
-		const contentOverlay = document.getElementById('contentOverlay');
-        const iframeContainer = document.getElementById('iframeContainer');
-        const iframe = document.getElementById('iframe');
-		const content = document.getElementById('content');
+  		const links = document.querySelectorAll('.openLink');
+  		const contentOverlay = document.getElementById('contentOverlay');
+  		const iframeContainer = document.getElementById('iframeContainer');
+  		const iframe = document.getElementById('iframe');
+  		const content = document.getElementById('content');
 
-        links.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const url = link.getAttribute('data-url');
-                iframe.src = url;
-				contentOverlay.style.display = 'block';
-                iframeContainer.style.display = 'block';
-				content.style.display = 'none';
-				document.body.style.overflow = 'hidden';
-            });
-        });
-    </script>
+  		function openIframe(url) {
+    		iframe.src = url;
+    		contentOverlay.style.display = 'block';
+    		iframeContainer.style.display = 'block';
+    		content.style.display = 'none';
+    		document.body.style.overflow = 'hidden';
+
+    		history.pushState({ iframeOpen: true }, '', '');
+  		}
+
+  		function closeIframe() {
+    		contentOverlay.style.display = 'none';
+    		iframeContainer.style.display = 'none';
+    		iframe.src = '';
+    		content.style.display = 'block';
+    		document.body.style.overflow = '';
+  		}
+
+  		links.forEach(link => {
+    		link.addEventListener('click', function(event) {
+      			event.preventDefault();
+      			const url = link.getAttribute('data-url');
+      			openIframe(url);
+    		});
+  		});
+
+  		window.addEventListener('popstate', (event) => {
+    		if (!event.state || !event.state.iframeOpen) {
+      			closeIframe();
+    		}
+  		});
+	</script>
 
     <script>
         window.addEventListener("beforeunload", function (e) {
@@ -179,6 +199,7 @@
 
 </body>
 </html>
+
 
 
 
