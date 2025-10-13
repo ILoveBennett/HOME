@@ -6,11 +6,11 @@
     <title>Home</title>
     <style>
 		html, body {
-      		    margin: 0;
-      	    	padding: 0;
-	    		height: 100%;
-				background-color: #121212;
-    		}
+      		margin: 0;
+      	    padding: 0;
+	    	height: 100%;
+			background-color: #121212;
+    	}
 
 		h1, h2, h3 {
   			margin: 0px;
@@ -21,19 +21,18 @@
       		padding: 20px;
     	}
 
-		.contentOverlay {
+		#contentOverlay {
       		position: fixed;
       		top: 0;
       		left: 0;
       		width: 100vw;
       		height: 100vh;
       		background-color: white;
-      		z-index: 0;
+      		z-index: 9998;
 			display: none;
     	}
 	    
         #iframeContainer {
-            allowfullscreen 
             border: 0;
             left: 0;
             position: fixed;
@@ -42,6 +41,7 @@
             height: 100vh;
             display: none;
 	    	overflow: hidden;
+			z-index: 9999;
         }
 				
 		iframe {
@@ -141,7 +141,7 @@
 	<p style="color:white;">Last update: Added new singleplayer game</p>
 	<p style="color:white;">Ver 4.0.2</p>
 	
-	
+	<div id="contentOverlay"></div>
 
     <div id="iframeContainer">
         <iframe id="iframe" src="" allowfullscreen></iframe>
@@ -179,6 +179,7 @@
 
 </body>
 </html>
+
 
 
 
